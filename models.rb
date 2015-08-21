@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://iantracey:Filly901secure@localhost/hacker-status")
 
 class Team
@@ -58,5 +59,16 @@ class Item
   	  return true
     end
   end
+=======
+DataMapper.setup(:default, 'postgres://localhost/status')
+class Task
+	include DataMapper::Resource
+
+	property :id,			Serial
+	property :complete, 	Boolean
+	property :description, 	Text
+	property :created_at,	DateTime
+	property :updated_at,   DateTime
+>>>>>>> fb7e36701d15b5f11c49081d89ad2bb307403f9f
 end
 DataMapper.auto_upgrade!
