@@ -12,58 +12,52 @@
         <meta name="viewport" content="width=device-width">
  
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="semantic/semantic.min.css">
         <link rel="stylesheet" href="stylesheets/styles.css">
-        <script src="scripts/modernizr-2.6.2.min.js"></script>
      
      
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
         <!-- Add your site or application content here -->
-        <div id="container">
-            <section id="taskforms" class="clearfix">
-                <div id="newtaskform" class="floatleft fifty">
-                    <h2>Create a New Task</h2>
-                    <form id="addtask" data-bind="submit: addTask">
-                        <input data-bind="value: newTaskDesc">
-                        <input type="submit">
-                    </form>
-                </div>
-                <div id="tasksearchform" class="floatright fifty">
-                    <h2>Search Tasks</h2>
-                    <form id="searchtask">
-                        <input>
-                    </form>
-                </div>
-            </section>
-            <section id="tasktable">
-                <h2>Incomplete Tasks remaining: <span></span></h2>
-                <a>Delete All Complete Tasks</a>
-                <table>
-                    <tbody><tr>
-                        <th>DB ID</th>
-                        <th>Description</th>
-                        <th>Date Added</th>
-                        <th>Date Modified</th>
-                        <th>Complete?</th>
-                        <th>Delete</th>
-                    </tr>
-                    <!-- ko foreach: tasks -->
-                    <tr>
-                        <td data-bind="text: id"></td>
-                        <td data-bind="text: description"></td>
-                        <td data-bind="text: created_at"></td>
-                        <td data-bind="text: updated_at"></td>
-                        <td><input type="checkbox"> </td>
-                        <td class="destroytask"><a>X</a></td>
-                    </tr>
-                    <!-- /ko -->
-                </tbody></table>
-            </section>
-        </div>
+<div class="ui secondary  menu">
+  <a class="active item">
+    Home
+  </a>
+  <a class="item">
+    Messages
+  </a>
+  <a class="item">
+    Friends
+  </a>
+  <div class="right menu">
+    <div class="item">
+      <div class="ui icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search link icon"></i>
+      </div>
+    </div>
+    <a class="ui item">
+      Logout
+    </a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
  
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="scripts/jquery.js"><\/script>')</script>
+        <script src="components/jquery/dist/jquery.min.js"></script>
+        <script src="semantic/semantic.min.js"></script>
         <script src="scripts/knockout.js"></script>
         <script src="scripts/app.js"></script>
  

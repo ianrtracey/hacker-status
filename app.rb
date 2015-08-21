@@ -16,10 +16,20 @@ get "/" do
   erb :index
  end
 
-get "/tasks" do
-  @tasks = Task.all
-  @tasks.to_json
+get "/api/v1/teams" do
+  @teams = Team.all
+  @teams.to_json
 end
+get "/api/v1/teams/:id" do
+  @team = Team.get(params[:id])
+  @team.to_json
+end
+
+get "/api/v1/users" do
+  @users = User.all
+  @users.to_json
+end
+
 
 post "/tasks/new" do
   @task = Task.new
