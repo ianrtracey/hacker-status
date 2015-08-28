@@ -12,9 +12,16 @@ before do
 end
 
 get "/" do
+  @users = User.all(:team_id => 7)
   content_type 'html'
   erb :index
- end
+end
+
+get "/status/:username" do
+  @user = User.get(1)
+  content_type 'html'
+  erb :status
+end
 
 get "/api/v1/teams" do
   @teams = Team.all
@@ -41,7 +48,7 @@ end
 
 put "tasks/:id" do
   @task = Task.find(params[:id])
-  @task.complete 	= params[:complete]
+  @task.complete   	= params[:complete]
   @task.description = params[:description]
   @task.updated_at  = DateTime.now
   if @task.save
@@ -62,4 +69,18 @@ end
 
 get "/getdate" do
   {:date => DateTime.now}.to_json
+end
+
+helpers do
+  def pretty_category(category)
+    case category
+      when "ACTIVE"
+        return '<div class="ui green horizontal label">Active</div>'
+      when "BLOCKER"
+        return '<div class="ui red horizontal label">Blocker</div>'
+      when "COMPLETED"
+        return '<div class="ui grey horizontal label">Completed</div>'
+      else
+    end
+  end
 end

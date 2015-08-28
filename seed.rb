@@ -24,7 +24,7 @@ private
 
 	def seed_users
 		USERBASE_SIZE.times do
-			User.create(:name => FFaker::Internet.user_name, :email => FFaker::Internet.email,
+			User.create(:username => FFaker::Internet.user_name, :name => FFaker::Name.name, :email => FFaker::Internet.email,
 			:password => "secret", :team_id => rand(1..Team.count) )
 		end
 	end
@@ -36,11 +36,16 @@ private
 			  status = Status.create(:user_id => user.id)
 			  	num_of_items = rand(1..10)
 			  	num_of_items.times do
-			  	  Item.create(:category => ["ACTIVE", "COMPLETED", "BLOCKER"].sample, 
+			  	  Item.create(:category => choose_category,
 				  :content => FFaker::Lorem.sentence, :status_id => status.id)
 			  	end
 			end
 		end
+	end
+
+	def choose_category
+		category = ["ACTIVE", "COMPLETED", "BLOCKER"]
+		return category.sample
 	end
 
 end

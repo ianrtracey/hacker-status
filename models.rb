@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://iantracey:Filly901secure@localhost/hacker-status")
 
 class Team
@@ -16,15 +15,16 @@ class User
   include DataMapper::Resource
 
   property :id,		   Serial
-  property :email,     String, :required => true, :length => 1..100, :unique => true,
+  property :email,   String, :required => true, :length => 1..100, :unique => true,
   	:format => :email_address,
   	:messages => {
   		:presence => "Please include an email",
   		:is_unique => "Email already taken",
   		:format => "Invalid email address format"
   	}
-  property :password,  String, :length => 100
-  property :name,	   String, :length => 100
+  property :password,  String, :required => true, :length => 100
+  property :name,      String, :required => true, :length => 1..100 
+  property :username,	 String, :length => 100
 
   has n, :statuses
   belongs_to :team
@@ -44,11 +44,13 @@ end
 class Item
   include DataMapper::Resource
 
-  validates_with_method :is_valid_category
+  #validates_with_method :is_valid_category
 
-  property :id,  		Serial
-  property :category,   String, :length => 1..50, :required => true
-  property :content,    String, :length => 1..140, :required => true
+  property :id,  		      Serial
+  property :category,     String,   :length => 1..50,   :required => true
+  property :content,      String,   :length => 1..140,  :required => true
+  property :is_deleted?,  Boolean, :default => false
+
 
   belongs_to :status
 
@@ -59,16 +61,5 @@ class Item
   	  return true
     end
   end
-=======
-DataMapper.setup(:default, 'postgres://localhost/status')
-class Task
-	include DataMapper::Resource
-
-	property :id,			Serial
-	property :complete, 	Boolean
-	property :description, 	Text
-	property :created_at,	DateTime
-	property :updated_at,   DateTime
->>>>>>> fb7e36701d15b5f11c49081d89ad2bb307403f9f
 end
 DataMapper.auto_upgrade!

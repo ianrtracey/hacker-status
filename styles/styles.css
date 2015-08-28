@@ -69,3 +69,8 @@ input[type=submit]:hover {
 }
 .floatleft { float: left; }
 .floatright { float: right; }
+
+.meta {
+    font-size: 0.9em;
+    opacity: 0.6;
+}

@@ -5,30 +5,20 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->  <!--<![endif]-->
     <body>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>ToDo</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
- 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="stylesheet" href="semantic/semantic.min.css">
-        <link rel="stylesheet" href="stylesheets/styles.css">
-     
-     
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
-        <!-- Add your site or application content here -->
-<div class="ui secondary  menu">
+            <%= erb(:_header, :layout => true) %>
+
+<div class="ui grid container">
+  <div class="row">
+    <div class="twelve column wide">
+<div class="ui pointing secondary  menu">
   <a class="active item">
     Home
   </a>
   <a class="item">
-    Messages
+    Mentions
   </a>
   <a class="item">
-    Friends
+    Invites
   </a>
   <div class="right menu">
     <div class="item">
@@ -38,35 +28,76 @@
       </div>
     </div>
     <a class="ui item">
-      Logout
+      ian@hackarizona.org
     </a>
   </div>
 </div>
+</div>
+</div><!-- end of nav row -->
+    
+    <div class="row">
+        <div class="six wide column">
+            <div class="ui fluid segment">
+  <div class="content">
+    <div class="header">Hack Arizona 2x Organizers</div>
+    <div class="meta">
+      <span>2 days ago</span>
+      <a>Animals</a>
+    </div>
+    <p></p>
+  </div>
+</div>
+            <div class="ui fluid segment">
+  <div class="content">
+    <div class="header">Most Popular Topics</div>
+    <div class="meta">
+      <span>2 days ago</span>
+      <a>Animals</a>
+    </div>
+    <p></p>
+  </div>
+</div>
+</div>
+        <div class="ten wide column">
+        <div class="ui grid">
+    <div class="sixteen wide column">
+        <div class="ui relaxed divided list">
+  <div class="item">
+    <img class="ui avatar image" src="images/helen.jpg" />
+        <div class="content">
+            <div class="header">
+                <%= "Your Name" %> <span class="meta">Date</span>
+            </div>
+            <div class="description">
+                <%= "#Your Name did this and this and this, she is currently doing this and needs help with this and this and this" %>
+                <a href="/your-name/status">View List</a>
+            </div>
+        </div>
+  </div>
+            <% @users.each do |user| %>
 
+  <div class="item">
+    <img class="ui avatar image" src="images/helen.jpg" />
+        <div class="content">
+            <div class="header">
+                <%= user.name %> <span class="meta">Date</span>
+            </div>
+            <div class="description">
+                <%= "#{user.name.split[0]} did this and this and this, she is currently doing this and needs help with this and this and this" %>
+                <a href=<%= "/status/#{user.username}"%>>View List</a>
+            </div>
+        </div>
+  </div>
+    <% end %>
 
+</div>
 
-
-
-
-
-
-
-
-
- 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="scripts/jquery.js"><\/script>')</script>
-        <script src="components/jquery/dist/jquery.min.js"></script>
-        <script src="semantic/semantic.min.js"></script>
-        <script src="scripts/knockout.js"></script>
-        <script src="scripts/app.js"></script>
- 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
+</div>
+</div>
+        </div>
+    </div><!-- end of row -->
+</div>
+</div>
+        <%= erb(:_footer, :layout => false) %>
     </body>
 </html>
